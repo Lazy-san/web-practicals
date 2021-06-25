@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modal.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">    
+        <div class="container-left">
+            <div class="box1">
+                <h1 class="h1-logo" id="callback-button"><a href="" id='datebtn'>JAVASCRIPT</a></h1>
+            </div>
+            <div class="box1">
+                <p id="logo-description">Ознакомительный сайт для начинающих</p>
+            </div>
+            <div class="box1">
+                <section class="text-content">
+                    <p>JavaScript ("JS" для краткости) — это полноценный динамический язык программирования, который
+                        применяется к HTML документу, и может обеспечить динамическую интерактивность на веб-сайтах. Его
+                        разработал Brendan Eich, сооснователь проекта Mozilla, Mozilla Foundation и Mozilla Corporation.
+                    </p>
+                    <p>JavaScript невероятно универсален и дружелюбен к новичкам. Обладая большим опытом, вы сможете
+                        создавать игры, анимированную 2D и 3D графику, полномасштабные приложения с базами данных и
+                        многое другое!</p>
+                    <p>JavaScript сам по себе довольно компактный, но очень гибкий. Разработчиками написано большое
+                        количество инструментов поверх основного языка JavaScript, которые разблокируют огромное
+                        количество дополнительных функций с очень небольшим усилием. К ним относятся:</p>
+                    <ul>
+                        <li>Программные интерфейсы приложения (API), встроенные в браузеры, обеспечивающие различные
+                            функциональные возможности, такие как динамическое создание HTML и установку CSS стилей,
+                            захват и манипуляция видеопотоком, работа с веб-камерой пользователя или генерация 3D
+                            графики и аудио сэмплов.</li>
+                        <li>Сторонние API позволяют разработчикам внедрять функциональность в свои сайты от других
+                            разработчиков, таких как Twitter или Facebook.</li>
+                        <li>Также вы можете применить к вашему HTML сторонние фреймворки и библиотеки, что позволит вам
+                            ускорить создание сайтов и приложений.</li>
+                    </ul>
+                    <p></p>
+                    <p></p>
+                </section>
+            </div>
+        </div>
+
+        <div class="container-right">
+            <a href="../p1/index.html" target="_blank">
+                <div class="demo-box">Демонстрация 1</div>
+            </a>
+            <a href="../p2/index.html" target="_blank">
+                <div class="demo-box">Демонстрация 2</div>
+            </a>
+            <a href="quiz.html" target="_blank">
+                <div class="demo-box">Пройти тест</div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Модальное окно -->
+    <div class="modal" id="modal-1">
+        <div class="modal__content">
+            <button class="modal__close-button"><img src="close.svg" width="12" alt=""></button>
+            <!-- Контент модального окна -->
+            <h1 class="modal__title" id="modaltitle"><script>document.getElementById('modaltitle').innerText = localStorage.getItem('username');</script></h1>
+            <p class="modal__description" id="modaldescription"><script>document.getElementById('modaldescription').innerText = localStorage.getItem('date');</script></p>
+        </div>
+    </div>
+    <script>
+            const date = new Date();
+            const monthNames = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
+            const formatdate = 'Сегодня: ' + date.getDate() + ' ' + monthNames[date.getMonth()] + ' ' + date.getFullYear() + ' года';
+            console.log(formatdate);
+            localStorage.setItem('date', formatdate);
+
+            if (localStorage.getItem('username') == null) {
+
+                var def = 'Неизвестный';
+                var username = prompt('Как вас зовут?', '');
+
+                if (username === '' || username === ' ' || username === null)
+                    localStorage.setItem('username', def);
+                else
+                    localStorage.setItem('username', username);
+            
+                alert('Здравствуйте, ' + localStorage.getItem('username'));
+                document.getElementById('modaldescription').innerText = localStorage.getItem('date')
+                document.getElementById('modaltitle').innerText = localStorage.getItem('username');
+            }
+            if (localStorage.getItem('username') == null)
+                localStorage.setItem('username', def);
+    </script>
+
+    <script src="modal.js"></script>
+
+</body>
+
+</html>
